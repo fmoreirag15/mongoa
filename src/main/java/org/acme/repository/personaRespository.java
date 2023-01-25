@@ -8,5 +8,11 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class personaRespository implements PanacheMongoRepository<Persona> {
 
-
+    public boolean findByIdPersona(String DNI){
+        if(find("DNI",DNI).firstResult()==null)
+        {
+            return true;
+        }
+        return false;
+    }
 }

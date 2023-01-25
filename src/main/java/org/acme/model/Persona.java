@@ -7,6 +7,7 @@ import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Data
 @MongoEntity(collection = "persona")
@@ -19,4 +20,9 @@ public class Persona {
     private String apellido;
     @NotEmpty(message = "no puede ser edad nulo")
     private String edad;
+    @NotEmpty(message = "pais no puede ser nulo")
+    private String country;
+    @NotEmpty(message = "DNI no puede ser nulo")
+    @Size(min = 0, max = 8, message = "No puede ser mayor a 8dig")
+    private String DNI;
 }

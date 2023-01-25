@@ -20,9 +20,14 @@ public class serviceImpl   implements Iservice {
 
     @Override
     public Persona guardarPersona(Persona persona) {
+        if(respository.findByIdPersona(persona.getDNI())) {
+            respository.persist(persona);
+            return persona;
+        }else
+        {
+            return  null;
+        }
 
-        respository.persist(persona);
-        return persona;
     }
 
     @Override
