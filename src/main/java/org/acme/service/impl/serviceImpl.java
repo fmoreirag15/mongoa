@@ -17,7 +17,7 @@ public class serviceImpl   implements Iservice {
     public List<Persona> listaPersona(Integer edad) {
         List<Persona> personaList=respository.listAll();
         return  personaList.stream()
-                .filter(c -> Integer.parseInt(c.getEdad())>edad)
+                .filter(c -> edad>Integer.parseInt(c.getEdad()))
                 .collect(Collectors.toList());
     }
     @Override
