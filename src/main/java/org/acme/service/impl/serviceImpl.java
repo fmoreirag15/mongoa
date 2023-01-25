@@ -25,16 +25,12 @@ public class serviceImpl   implements Iservice {
         if(respository.findByIdPersona(persona.getDNI())) {
             respository.persist(persona);
             return persona;
-        }else
-        {
+        }else{
             return  null;
         }
-
     }
-
     @Override
     public Persona modificarPersona(Persona persona) {
-
         respository.update(persona);
         return persona;
     }

@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
 public class mongoController {
     @Inject
     Iservice iservice;
-        @Inject
-        Validator validator;
+    @Inject
+    Validator validator;
     @GET
-    @Path("/list")
+    @Path("/list/{edad}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response listPersona(@PathParam("edad") Integer edad) {
