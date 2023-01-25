@@ -23,8 +23,8 @@ public class mongoController {
     @Path("/list")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response listPersona() {
-        return Response.ok().entity(iservice.listaPersona()).build();
+    public Response listPersona(@PathParam("edad") Integer edad) {
+        return Response.ok().entity(iservice.listaPersona(edad)).build();
     }
     @GET
     @Path("/list/{id}")

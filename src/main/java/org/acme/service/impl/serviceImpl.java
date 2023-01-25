@@ -9,13 +9,19 @@ import org.bson.types.ObjectId;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @ApplicationScoped
 public class serviceImpl   implements Iservice {
     @Inject
     personaRespository respository;
     @Override
-    public List<Persona> listaPersona() {
-        return respository.listAll();
+    public List<Persona> listaPersona(Integer edad) {
+        List<Persona> personaList=respository.listAll();
+        return  personaList.stream()
+                .filter(c -> Integer.parseInt(c.getEdad())>edad)
+                .collect(Collectors.toList());
+
     }
 
     @Override
