@@ -1,6 +1,4 @@
 package org.acme.service.impl;
-
-
 import org.acme.model.Persona;
 import org.acme.repository.personaRespository;
 import org.acme.service.Iservice;
@@ -21,9 +19,7 @@ public class serviceImpl   implements Iservice {
         return  personaList.stream()
                 .filter(c -> Integer.parseInt(c.getEdad())>edad)
                 .collect(Collectors.toList());
-
     }
-
     @Override
     public Persona guardarPersona(Persona persona) {
         if(respository.findByIdPersona(persona.getDNI())) {
