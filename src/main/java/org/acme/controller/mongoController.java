@@ -38,7 +38,7 @@ public class mongoController {
     @Path("/save")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Transactional
+
     public Response guardarPersona(Persona persona) {
         Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
@@ -63,7 +63,7 @@ public class mongoController {
     @Path("/update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Transactional
+
     public Response modificarPersona(Persona persona) {
         Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
