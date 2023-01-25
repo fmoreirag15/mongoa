@@ -5,6 +5,7 @@ import org.acme.model.Persona;
 import org.acme.service.Iservice;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import javax.ws.rs.*;
@@ -37,6 +38,7 @@ public class mongoController {
     @Path("/save")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response guardarPersona(Persona persona) {
         Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
@@ -61,6 +63,7 @@ public class mongoController {
     @Path("/update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response modificarPersona(Persona persona) {
         Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
