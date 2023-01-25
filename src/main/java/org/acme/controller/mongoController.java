@@ -40,7 +40,14 @@ public class mongoController {
     public Response guardarPersona(Persona persona) {
         Set<ConstraintViolation<Persona>> violations = validator.validate(persona);
         if (violations.isEmpty()) {
-            return Response.status(201).entity(iservice.guardarPersona(persona)).build();
+            if(iservice.guardarPersona(persona)==null)
+            {
+                return Response.status(204).tag("No se pudo guardar").entity(persona).build();
+
+            }else {
+                return Response.status(201).entity(persona).build();
+            }
+
         }else
         {
             return Response.status(500).entity(violations.stream()
